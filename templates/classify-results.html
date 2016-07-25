@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Classify Results</title>
+  <link rel="stylesheet" href="/bootstrap.min.css">
+</head>
+<body>
+  {% include 'nav.html' %}
+  <div class="container">
+    {% if message %}
+    <div class="alert alert-dismissible alert-info" style="white-space: pre;">{{message}}</div>
+    {% endif %}
+    <p>
+      <a class="btn btn-primary btn-large" href="export">Export as CSV</a>
+    </p>
+    <p>Page {{page}} of {{total_pages}}</p>
+    {% if request.path.startswith("/status") %}
+    <table class="table table-striped table-hover table-bordered">
+      <tr>
+        <th>Row ID</th>
+        <th>#status</th>
+        <th>Status Category</th>
+      </tr>
+      {% for result in results %}
+      <tr>
+        {% for td in result %}
+        <td>{{td}}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </table>
+    {% else %}
+    <table class="table table-striped table-hover table-bordered">
+      <tr>
+        <th>Row ID</th>
+        <th>#water_source</th>
+        <th>#water_tech</th>
+        <th>Water Source Type</th>
+      </tr>
+      {% for result in results %}
+      <tr>
+        {% for td in result %}
+        <td>{{td}}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </table>
+    {% endif %}
+    <ul class="pagination">
+      {% if page > 1 %}
+      <li><a href="classify-results?page=1">First</a></li>
+      <li><a href="classify-results?page={{page - 1}}">Prev</a></li>
+      {% endif %}
+      {% if page < total_pages %}
+      <li><a href="classify-results?page={{page + 1}}">Next</a></li>
+      <li><a href="classify-results?page={{total_pages}}">Last</a></li>
+      {% endif %}
+    </ul>
+  </div>
+</body>
+</html>

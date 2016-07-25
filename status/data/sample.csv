@@ -1,0 +1,8 @@
+Row ID,#status,Status Category
+298646,Functional,Functional
+209964,Non-Functional,vague
+48944,Status:Not functional|Reason Not Functioning:No pump|Quantity:Unknown|Quality:Unknown,missingparts
+13782,OK,Functional
+295683,Non-Functional - low yielding,quantity_other
+26458,Status:Functional|Quantity:Enough|Quality:Soft,Functional
+84103,Yes- but partly damaged. Well damaged | Apron Damaged | Pump stolen,"technical_other, vandalism"

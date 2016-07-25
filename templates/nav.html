@@ -1,0 +1,27 @@
+<nav class="navbar navbar-default">
+  <div class="container">
+    <ul class="nav navbar-nav">
+      <li{% if not request.path.startswith("/status") %} class="active"{% endif %}>
+        <a href="/">Water Source Types</a>
+      </li>
+      <li{% if request.path.startswith("/status") %} class="active"{% endif %}>
+        <a href="/status">Status</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<h2 class="container">{% if request.path.startswith("/status") %} Status {% else %} Water Source Types {% endif %}</h2>
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <ul class="nav navbar-nav">
+      <li{% if not (request.path.startswith("/classify-results") or request.path.startswith("/status/classify-results")) %} class="active"{% endif %}>
+        <a {% if request.path.startswith("/status") %} href="/status" {% else %} href="/" {% endif %}>Train and Classify</a>
+      </li>
+      {% if results_exist: %}
+      <li{% if request.path.startswith("/classify-results") or request.path.startswith("/status/classify-results") %} class="active"{% endif %}>
+        <a {% if request.path.startswith("/status") %} href="/status/classify-results" {% else %} href="/classify-results" {% endif %}>See Last Classify Results</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>

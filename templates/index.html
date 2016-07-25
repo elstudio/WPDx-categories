@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Train</title>
+  <link rel="stylesheet" href="/bootstrap.min.css">
+</head>
+<body>
+  {% include 'nav.html' %}
+  <div class="container">
+    <div class="col-sm-12">
+      <form method="post" action="" enctype="multipart/form-data" class="form-horizontal">
+        <div class="form-group">
+          <label for="train" class="control-label col-sm-3">
+            Train (leave empty to train with default input)
+          </label>
+          <div class="col-sm-4">
+            <input class="form-control" type="file" name="train">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="classify" class="control-label col-sm-3">Classify</label>
+          <div class="col-sm-4">
+            <input class="form-control" type="file" name="classify" required>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="form-group">
+          <div>
+            <label>Sample of the CSV input data format ("{{result_column}}" column is only required for Train data):</label>
+            <div class="well">
+              {% for row in sample %}
+                {{row}}<br/>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary" type="submit">Train and Classify</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
