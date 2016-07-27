@@ -31,7 +31,7 @@ def index():
 
     results_exist = os.path.isfile('classify-output.csv')
     # Reading sample data
-    with open('sample.csv', 'rU') as f:
+    with open('/var/www/d2d-classification/sample.csv', 'rU') as f:
         sample = f.readlines();
     return render_template('index.html', results_exist=results_exist, sample=sample, result_column='Water Source Type')
 
