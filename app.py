@@ -1,6 +1,7 @@
-import csv, math, os, subprocess
+import csv, math, os, subprocess, sys
 from flask import Flask, redirect, render_template, request, send_file, url_for
 app = Flask(__name__)
+app_path = sys.path[0] + '/'
 
 RESULTS_PER_PAGE = 25
 
@@ -31,7 +32,7 @@ def index():
 
     results_exist = os.path.isfile('classify-output.csv')
     # Reading sample data
-    with open('/var/www/d2d-classification/sample.csv', 'rU') as f:
+    with open(app_path + 'sample.csv', 'rU') as f:
         sample = f.readlines();
     return render_template('index.html', results_exist=results_exist, sample=sample, result_column='Water Source Type')
 
